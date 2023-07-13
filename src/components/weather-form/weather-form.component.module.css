@@ -1,0 +1,46 @@
+.cardContainer{
+height: 250px;
+width: 300px;
+background-color: white;
+border-radius: 5px;
+margin: 10rem auto;
+padding: 10px;
+}
+.title{
+  text-align: left;
+  color:#61dafb;
+}
+.input{
+  text-align: center;
+  width:80%;
+  margin: auto;
+  height: 30px;
+}
+.form{
+  display: flex;
+  flex-direction: column;
+}
+.button{
+  height: 30px;
+  background-color: #61dafb;
+  border-radius: 5px;
+  border: none;
+  color:white;
+  margin: 10px auto;
+ cursor: pointer;
+}
+
+.divider{
+  width:100%;
+  background-color:rgb(218, 216, 216);
+  height: 1px;
+  margin: 10px auto;
+}
+.dividerContainer{
+  display: flex;
+  align-content: center;
+}
+.spinner{
+  text-align: center;
+  align-self: center;
+}

@@ -1,0 +1,79 @@
+.cardContainer{
+    height: 408px;
+    width: 300px;
+    background-color: white;
+    border-radius: 5px;
+    margin: 5rem auto;
+    padding: 10px;
+    }
+    .title{
+      text-align: left;
+      color:#61dafb;
+    }
+    .divider{
+      width:100%;
+      background-color:rgb(218, 216, 216);
+      height: 1px;
+      margin: 10px auto;
+    }
+    .dividerContainer{
+      display: flex;
+    }
+    .getlocation{
+      height: 30px;
+      background-color: #61dafb;
+      border-radius: 5px;
+      border: none;
+      color:white;
+      margin-top: 20px;
+    }
+    .button{
+        font-size: 30px;
+        margin-right: 10px;
+        color: #61dafb;
+        background:none ;
+        border: none;
+        font-weight: 600;
+    }
+    .appheader{
+        display: flex;
+        align-items: center;
+    }
+    .temperature{
+        font-size: 50px;
+        font-weight: 300;
+    }
+    .description{
+        text-transform: capitalize;
+    }
+    .location{
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+    .appFooterSection{
+        border-top: solid 1px  lightgray;
+        display: flex;
+        margin-top: 2rem;
+
+    }
+    .humidity{
+        width:50%;
+        height:50px;
+    }
+    .feelLike{
+        width:50%;
+        border-right: solid 1px  lightgray;
+        height:50px;
+    }
+    .images{
+        width:50px;
+        height: 50px;
+    }
+    .weatherIcon{
+        width: 100px;
+        height: 100px;
+        background-size: cover;
+        justify-self: center;
+        margin: auto;
+      }
