@@ -2,9 +2,17 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+
+
 ## Available Scripts
 
 In the project directory, you can run:
+
+## Steps to run the project locally
+Clone the repo
+switch to master/ develop branch and follow the following steps:
+npm install
+npm start
 
 ### `npm start`
 
