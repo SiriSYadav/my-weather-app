@@ -6,38 +6,41 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectFetchedWeatherData } from '../../redux/weather.selector'; 
 import  weatherFormStyles from './weather-form.component.module.css';
 import { CircularProgress } from '@mui/material';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const WeatherForm = () => {
   const [location, setLocation] = useState('');
-  const [weatherData, setWeatherData] = useState(null);
   const [error, setError] = useState(null);
   const dispatch=useDispatch();
   let fetchedWeatherData=useSelector(selectFetchedWeatherData);
   const [displayWeatherApp,setDisplayWeatherApp]=useState(false);
   const [weatherType,setWeatherType]=useState("");
-
-  console.warn("payload",fetchedWeatherData)
+  const navigate=useNavigate();
  
 
   useEffect(()=>{
     if(fetchedWeatherData.items?.main)
     {
-      setWeatherData(fetchedWeatherData.items)
       setDisplayWeatherApp(true);
+
     }
     if(fetchedWeatherData.error)
     {
         setError(fetchedWeatherData.error);
-        setWeatherData([]);
     }
   },[fetchedWeatherData])
+ 
+
 
 
   const handleSubmit = async (e) => {
+    setLocation(e.target.value)
     e.preventDefault();
-        setWeatherType("city");
-      dispatch(fetchWeatherDataAction({location:location,type:"city"}))   
+    navigate(`${location}`);
+        
   };
+
+
   
   const handleCurrentLocationSelection = () => {
     setWeatherType("currentLocation");
@@ -62,21 +65,29 @@ const WeatherForm = () => {
 
   return (
     <div>
-     {!displayWeatherApp?
+     {!displayWeatherApp&&
      (<div className={weatherFormStyles.cardContainer} >
         <h2 className={weatherFormStyles.title}>Weather App</h2>
         <div className={weatherFormStyles.divider}></div>
       <form onSubmit={handleSubmit} className={weatherFormStyles.form}>
-        <input
+        {/* <input
           type="text"
           placeholder="Enter city name"
           value={location}
           onChange={(e) => setLocation(e.target.value)}
           className={weatherFormStyles.input}
-        />
+        /> */}
+        <select placeholder='Select a City' value={location} onChange={handleSubmit}>
+        <option>Select a City</option>
+          <option value={"Bengaluru"}>Bengaluru</option>
+          <option value={"Chennai"}>Chennai</option>
+          <option value={"Delhi"}>Delhi</option>
+          <option value={"Bombay"}>Bombay</option>
+          <option value={"Mangalore"}>Mangalore</option>
+
+        </select>
                 {error && <ErrorDisplay message={error}/>}
-                {fetchedWeatherData.loading && weatherType==="city"?<CircularProgress className={weatherFormStyles.spinner}/>: 
-                <button type="submit"className={weatherFormStyles.button}>Submit</button>}
+                
 
       </form>
       <div className={weatherFormStyles.dividerContainer}>
@@ -91,14 +102,7 @@ const WeatherForm = () => {
         </button>
         }
       </div>
-      ):weatherData && 
-      <WeatherDisplay 
-        data={weatherData} 
-        enableWeatherForm={(flag)=>{
-            setDisplayWeatherApp(flag);
-            }} 
-        />
-        } 
+)}
     </div>
   );
 };

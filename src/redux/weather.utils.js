@@ -14,7 +14,6 @@ export const fetchWeatherData=async (dispatch, {location,type}) => {
         payload: response,
       });
     } catch (exception) {
-        console.warn("exception",exception.message)
       dispatch({
         type: weatherActionTypes.FETCH_DATA_FAILURE,
         payload: exception.message,
